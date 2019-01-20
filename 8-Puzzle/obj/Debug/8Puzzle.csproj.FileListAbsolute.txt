@@ -1,0 +1,11 @@
+C:\Users\Beta-Pc\Desktop\New folder\8-Puzzle\bin\Debug\8-Puzzle.exe.config
+C:\Users\Beta-Pc\Desktop\New folder\8-Puzzle\bin\Debug\8-Puzzle.exe
+C:\Users\Beta-Pc\Desktop\New folder\8-Puzzle\bin\Debug\8-Puzzle.pdb
+C:\Users\Beta-Pc\Desktop\New folder\8-Puzzle\bin\Debug\Priority Queue.dll
+C:\Users\Beta-Pc\Desktop\New folder\8-Puzzle\bin\Debug\Priority Queue.pdb
+C:\Users\Beta-Pc\Desktop\New folder\8-Puzzle\bin\Debug\Priority Queue.xml
+C:\Users\Beta-Pc\Desktop\New folder\8-Puzzle\obj\Debug\8Puzzle.csprojAssemblyReference.cache
+C:\Users\Beta-Pc\Desktop\New folder\8-Puzzle\obj\Debug\8Puzzle.csproj.CoreCompileInputs.cache
+C:\Users\Beta-Pc\Desktop\New folder\8-Puzzle\obj\Debug\8Puzzle.csproj.CopyComplete
+C:\Users\Beta-Pc\Desktop\New folder\8-Puzzle\obj\Debug\8-Puzzle.exe
+C:\Users\Beta-Pc\Desktop\New folder\8-Puzzle\obj\Debug\8-Puzzle.pdb

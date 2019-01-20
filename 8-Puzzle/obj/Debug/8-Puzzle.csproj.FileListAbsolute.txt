@@ -1,0 +1,11 @@
+D:\Year_3\AI\8-Puzzle\8-Puzzle\bin\Debug\8-Puzzle.exe.config
+D:\Year_3\AI\8-Puzzle\8-Puzzle\bin\Debug\8-Puzzle.exe
+D:\Year_3\AI\8-Puzzle\8-Puzzle\bin\Debug\8-Puzzle.pdb
+D:\Year_3\AI\8-Puzzle\8-Puzzle\obj\Debug\8-Puzzle.csprojAssemblyReference.cache
+D:\Year_3\AI\8-Puzzle\8-Puzzle\obj\Debug\8-Puzzle.csproj.CoreCompileInputs.cache
+D:\Year_3\AI\8-Puzzle\8-Puzzle\obj\Debug\8-Puzzle.exe
+D:\Year_3\AI\8-Puzzle\8-Puzzle\obj\Debug\8-Puzzle.pdb
+D:\Year_3\AI\8-Puzzle\8-Puzzle\bin\Debug\Priority Queue.dll
+D:\Year_3\AI\8-Puzzle\8-Puzzle\bin\Debug\Priority Queue.pdb
+D:\Year_3\AI\8-Puzzle\8-Puzzle\bin\Debug\Priority Queue.xml
+D:\Year_3\AI\8-Puzzle\8-Puzzle\obj\Debug\8-Puzzle.csproj.CopyComplete
