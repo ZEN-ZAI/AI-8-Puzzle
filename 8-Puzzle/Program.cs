@@ -16,25 +16,26 @@ namespace _8Puzzle
         static Table goalTable;
         static Table startTable;
 
+        //static IndexOfGoalTable startTable;
+
         static int spanTime = 0;
 
         static void Main(string[] args)
         {
-            
-
-            /*int[,] goal = new int[,]
+            int[,] goal = new int[,]
             {
                 {1,2,3 },
-                {4,5,6 },
-                {7,8,0 }
-            };*/
+                {4,8,6 },
+                {5,7,0 }
+            };
 
+            /*
             int[,] goal = new int[,]
             {
                 {1,2,3 },
                 {8,0,4 },
                 {7,6,5 }
-            };
+            };*/
 
             int[,] start = new int[,]
             {
@@ -45,6 +46,9 @@ namespace _8Puzzle
 
             goalTable = new Table(goal);
             startTable = new Table(start);
+
+
+
 
             Console.WriteLine("Spantime: Initial" + " | Priority: " + Priority(startTable));
             startTable.Print();
@@ -129,7 +133,7 @@ namespace _8Puzzle
                         tempTable.Print();
                         //Console.WriteLine(tempTable.Key);
 
-                        if (CheckEnd(tempTable,tempHead)) break;
+                        if (CheckEnd(tempTable, tempHead)) break;
                     }
 
                 }
@@ -139,7 +143,7 @@ namespace _8Puzzle
 
         }
 
-        static bool CheckEnd(Table table , Table parent)
+        static bool CheckEnd(Table table, Table parent)
         {
             if (Priority(table) == 0 || table.Key == goalTable.Key)
             {
@@ -173,7 +177,7 @@ namespace _8Puzzle
         {
             int[,] newTable = new int[3, 3];
             Array.Copy(source.table, newTable, source.table.Length);
-            
+
             return new Table(newTable);
         }
 
@@ -193,26 +197,66 @@ namespace _8Puzzle
             sum += Taxicab(table.GetIndex(5).Item2, table.GetIndex(5).Item1, 2, 2);
             */
 
-            //12346578*
-            
-            sum += Taxicab(table.GetIndex(1).Item2, table.GetIndex(1).Item1, 0, 0);
-            sum += Taxicab(table.GetIndex(2).Item2, table.GetIndex(2).Item1, 1, 0);
-            sum += Taxicab(table.GetIndex(3).Item2, table.GetIndex(3).Item1, 2, 0);
-            sum += Taxicab(table.GetIndex(4).Item2, table.GetIndex(4).Item1, 0, 1);
-            sum += Taxicab(table.GetIndex(5).Item2, table.GetIndex(5).Item1, 1, 1);
-            sum += Taxicab(table.GetIndex(6).Item2, table.GetIndex(6).Item1, 2, 1);
-            sum += Taxicab(table.GetIndex(7).Item2, table.GetIndex(7).Item1, 0, 2);
-            sum += Taxicab(table.GetIndex(8).Item2, table.GetIndex(8).Item1, 1, 2);
-            
+            //12346578
+            /*
+            sum += Taxicab(table.GetIndex(1), 0, 0);
+            sum += Taxicab(table.GetIndex(2), 1, 0);
+            sum += Taxicab(table.GetIndex(3), 2, 0);
+            sum += Taxicab(table.GetIndex(4), 0, 1);
+            sum += Taxicab(table.GetIndex(5), 1, 1);
+            sum += Taxicab(table.GetIndex(6), 2, 1);
+            sum += Taxicab(table.GetIndex(7), 0, 2);
+            sum += Taxicab(table.GetIndex(8), 1, 2);
+            */
 
-            //Console.WriteLine("      "+ sum);
+            sum += Taxicab(table.GetIndex(1), goalTable.GetIndex(1));
+            sum += Taxicab(table.GetIndex(2), goalTable.GetIndex(2));
+            sum += Taxicab(table.GetIndex(3), goalTable.GetIndex(3));
+            sum += Taxicab(table.GetIndex(4), goalTable.GetIndex(4));
+            sum += Taxicab(table.GetIndex(5), goalTable.GetIndex(5));
+            sum += Taxicab(table.GetIndex(6), goalTable.GetIndex(6));
+            sum += Taxicab(table.GetIndex(7), goalTable.GetIndex(7));
+            sum += Taxicab(table.GetIndex(8), goalTable.GetIndex(8));
+
             return sum;
+        }
+
+        public Tuple<int, int> GetIndex(int item)
+        {
+            Tuple<int, int> indexItem = new Tuple<int, int>(3, 3);
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (goalTable.table[i, j] == item)
+                    {
+                        indexItem = new Tuple<int, int>(i, j);
+                    }
+                }
+            }
+
+            return indexItem;
         }
 
         static int Taxicab(int x1, int y1, int x2, int y2)
         {
             int result2;
             result2 = Math.Abs(x1 - x2) + Math.Abs(y1 - y2);
+            return result2;
+        }
+
+        static int Taxicab(Tuple<int, int> index, int x2, int y2)
+        {
+            int result2;
+            result2 = Math.Abs(index.Item2 - x2) + Math.Abs(index.Item1 - y2);
+            return result2;
+        }
+
+        static int Taxicab(Tuple<int, int> xy1, Tuple<int, int> xy2)
+        {
+            int result2;
+            result2 = Math.Abs(xy1.Item2 - xy2.Item2) + Math.Abs(xy1.Item1 - xy2.Item1);
             return result2;
         }
     }
