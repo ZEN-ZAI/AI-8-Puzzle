@@ -16,12 +16,11 @@ namespace _8Puzzle
         static Table goalTable;
         static Table startTable;
 
-        //static IndexOfGoalTable startTable;
-
         static int spanTime = 0;
 
         static void Main(string[] args)
         {
+            
             int[,] goal = new int[,]
             {
                 {1,2,3 },
@@ -59,7 +58,7 @@ namespace _8Puzzle
             while (true)
             {
 
-                Console.WriteLine(" Span " + heap.First.Key + " | Priority: " + heap.GetPriority(heap.First));
+                //Console.WriteLine(" Span " + heap.First.Key + " | Priority: " + heap.GetPriority(heap.First));
 
                 Table tempHead = heap.First;
                 heap.Dequeue();
@@ -75,7 +74,7 @@ namespace _8Puzzle
 
                         Console.WriteLine("Spantime: " + ++spanTime + " | From Parent " + tempHead.Key + " | Priority: " + Priority(tempTable));
 
-                        tempTable.Print();
+                        //tempTable.Print();
                         //Console.WriteLine(tempTable.Key);
 
                         if (CheckEnd(tempTable, tempHead)) break;
@@ -93,7 +92,7 @@ namespace _8Puzzle
 
                         Console.WriteLine("Spantime: " + ++spanTime + " | From Parent " + tempHead.Key + " | Priority: " + Priority(tempTable));
 
-                        tempTable.Print();
+                        //tempTable.Print();
                         //Console.WriteLine(tempTable.Key);
 
                         if (CheckEnd(tempTable, tempHead)) break;
@@ -112,7 +111,7 @@ namespace _8Puzzle
 
                         Console.WriteLine("Spantime: " + ++spanTime + " | From Parent " + tempHead.Key + " | Priority: " + Priority(tempTable));
 
-                        tempTable.Print();
+                        //tempTable.Print();
                         //Console.WriteLine(tempTable.Key);
 
                         if (CheckEnd(tempTable, tempHead)) break;
@@ -130,7 +129,7 @@ namespace _8Puzzle
 
                         Console.WriteLine("Spantime: " + ++spanTime + " | From Parent " + tempHead.Key + " | Priority: " + Priority(tempTable));
 
-                        tempTable.Print();
+                        //tempTable.Print();
                         //Console.WriteLine(tempTable.Key);
 
                         if (CheckEnd(tempTable, tempHead)) break;
@@ -138,7 +137,7 @@ namespace _8Puzzle
 
                 }
 
-                Console.WriteLine("Heap count: " + heap.Count);
+                //Console.WriteLine("Heap count: " + heap.Count);
             }
 
         }
@@ -184,30 +183,6 @@ namespace _8Puzzle
         static float Priority(Table table)
         {
             float sum = 0;
-
-            /*
-            sum += Taxicab(table.GetIndex(1).Item2, table.GetIndex(1).Item1, 0, 0);
-            sum += Taxicab(table.GetIndex(2).Item2, table.GetIndex(2).Item1, 1, 0);
-            sum += Taxicab(table.GetIndex(3).Item2, table.GetIndex(3).Item1, 2, 0);
-            sum += Taxicab(table.GetIndex(8).Item2, table.GetIndex(8).Item1, 0, 1);
-
-            sum += Taxicab(table.GetIndex(4).Item2, table.GetIndex(4).Item1, 2, 1);
-            sum += Taxicab(table.GetIndex(7).Item2, table.GetIndex(7).Item1, 0, 2);
-            sum += Taxicab(table.GetIndex(6).Item2, table.GetIndex(6).Item1, 1, 2);
-            sum += Taxicab(table.GetIndex(5).Item2, table.GetIndex(5).Item1, 2, 2);
-            */
-
-            //12346578
-            /*
-            sum += Taxicab(table.GetIndex(1), 0, 0);
-            sum += Taxicab(table.GetIndex(2), 1, 0);
-            sum += Taxicab(table.GetIndex(3), 2, 0);
-            sum += Taxicab(table.GetIndex(4), 0, 1);
-            sum += Taxicab(table.GetIndex(5), 1, 1);
-            sum += Taxicab(table.GetIndex(6), 2, 1);
-            sum += Taxicab(table.GetIndex(7), 0, 2);
-            sum += Taxicab(table.GetIndex(8), 1, 2);
-            */
 
             sum += Taxicab(table.GetIndex(1), goalTable.GetIndex(1));
             sum += Taxicab(table.GetIndex(2), goalTable.GetIndex(2));
