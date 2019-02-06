@@ -34,8 +34,6 @@ namespace _8Puzzle
                     words.RemoveAt(words.Count-1);
                 }
             }
-
-            
         }
 
         public void Print()

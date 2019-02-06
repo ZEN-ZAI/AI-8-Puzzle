@@ -50,9 +50,8 @@ namespace _8Puzzle
             startTable.Print();
             hashTable.Add(startTable.Key, null);
             heap.Enqueue(startTable, Priority(startTable));
-            //Console.WriteLine("heap count: " + heap.Count);
 
-            
+            //Console.WriteLine("heap count: " + heap.Count);
 
             Search();
             Console.WriteLine("\n - Show path - \n");
@@ -145,8 +144,6 @@ namespace _8Puzzle
                     }
 
                 }
-
-                //Console.WriteLine("Heap count: " + heap.Count);
             }
         }
 
