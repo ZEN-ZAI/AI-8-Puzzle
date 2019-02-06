@@ -8,12 +8,34 @@ namespace _8Puzzle
 {
     class Table
     {
-        public int[,] table;
-
+        public int[,] table = new int[3, 3];
 
         public Table(int[,] table)
         {
             this.table = table;
+        }
+
+        public Table(string key)
+        {
+            List<string> words = new List<string>();
+
+            foreach (var item in key)
+            {
+                words.Add(item+"");
+            }
+
+            words.Reverse();
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    table[i, j] = int.Parse(words[words.Count-1]);
+                    words.RemoveAt(words.Count-1);
+                }
+            }
+
+            
         }
 
         public void Print()

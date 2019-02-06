@@ -46,16 +46,25 @@ namespace _8Puzzle
             goalTable = new Table(goal);
             startTable = new Table(start);
 
-
-
-
             Console.WriteLine("Spantime: Initial" + " | Priority: " + Priority(startTable));
             startTable.Print();
-            hashTable.Add(startTable.Key, "");
+            hashTable.Add(startTable.Key, null);
             heap.Enqueue(startTable, Priority(startTable));
-            Console.WriteLine("heap count: " + heap.Count);
+            //Console.WriteLine("heap count: " + heap.Count);
 
-            while (true)
+            
+
+            Search();
+            Console.WriteLine("\n - Show path - \n");
+            ShowPath();
+
+            Console.WriteLine(" - Finish - ");
+            Console.ReadKey();
+        }
+
+        static void Search()
+        {
+            while (heap.First.Key != goalTable.Key)
             {
 
                 //Console.WriteLine(" Span " + heap.First.Key + " | Priority: " + heap.GetPriority(heap.First));
@@ -72,12 +81,12 @@ namespace _8Puzzle
                         hashTable.Add(tempTable.Key, tempHead.Key);
                         heap.Enqueue(tempTable, Priority(tempTable));
 
-                        Console.WriteLine("Spantime: " + ++spanTime + " | From Parent " + tempHead.Key + " | Priority: " + Priority(tempTable));
+                        Console.WriteLine("Spantime: " + ++spanTime + " | State: " + tempTable.Key + " | From Parent " + tempHead.Key + " | Priority: " + Priority(tempTable));
 
                         //tempTable.Print();
                         //Console.WriteLine(tempTable.Key);
 
-                        if (CheckEnd(tempTable, tempHead)) break;
+                        CheckEnd(tempTable, tempHead);
                     }
 
                 }
@@ -90,12 +99,12 @@ namespace _8Puzzle
                         hashTable.Add(tempTable.Key, tempHead.Key);
                         heap.Enqueue(tempTable, Priority(tempTable));
 
-                        Console.WriteLine("Spantime: " + ++spanTime + " | From Parent " + tempHead.Key + " | Priority: " + Priority(tempTable));
+                        Console.WriteLine("Spantime: " + ++spanTime + " | State: " + tempTable.Key + " | From Parent " + tempHead.Key + " | Priority: " + Priority(tempTable));
 
                         //tempTable.Print();
                         //Console.WriteLine(tempTable.Key);
 
-                        if (CheckEnd(tempTable, tempHead)) break;
+                        CheckEnd(tempTable, tempHead);
                     }
 
                 }
@@ -109,12 +118,12 @@ namespace _8Puzzle
                         hashTable.Add(tempTable.Key, tempHead.Key);
                         heap.Enqueue(tempTable, Priority(tempTable));
 
-                        Console.WriteLine("Spantime: " + ++spanTime + " | From Parent " + tempHead.Key + " | Priority: " + Priority(tempTable));
+                        Console.WriteLine("Spantime: " + ++spanTime + " | State: " + tempTable.Key + " | From Parent " + tempHead.Key + " | Priority: " + Priority(tempTable));
 
                         //tempTable.Print();
                         //Console.WriteLine(tempTable.Key);
 
-                        if (CheckEnd(tempTable, tempHead)) break;
+                        CheckEnd(tempTable, tempHead);
                     }
 
                 }
@@ -127,50 +136,59 @@ namespace _8Puzzle
                         hashTable.Add(tempTable.Key, tempHead.Key);
                         heap.Enqueue(tempTable, Priority(tempTable));
 
-                        Console.WriteLine("Spantime: " + ++spanTime + " | From Parent " + tempHead.Key + " | Priority: " + Priority(tempTable));
+                        Console.WriteLine("Spantime: " + ++spanTime + " | State: " + tempTable.Key + " | From Parent " + tempHead.Key + " | Priority: " + Priority(tempTable));
 
                         //tempTable.Print();
                         //Console.WriteLine(tempTable.Key);
 
-                        if (CheckEnd(tempTable, tempHead)) break;
+                        CheckEnd(tempTable, tempHead);
                     }
 
                 }
 
                 //Console.WriteLine("Heap count: " + heap.Count);
             }
-
         }
 
-        static bool CheckEnd(Table table, Table parent)
+        static void CheckEnd(Table table, Table parent)
         {
             if (Priority(table) == 0 || table.Key == goalTable.Key)
             {
                 Console.WriteLine(" [Goal] Spantime: " + spanTime + " | From Parent " + parent.Key);
-                Console.ReadKey();
+            }
 
+        }
+
+        static bool IsEnd(Table table, Table parent)
+        {
+            if (Priority(table) == 0 || table.Key == goalTable.Key)
+            {
+                Console.WriteLine(" [Goal] Spantime: " + spanTime + " | From Parent " + parent.Key);
                 return true;
             }
             else
             {
                 return false;
             }
-
         }
 
-        /*
-        static void ShowPath(Table goalTable)
+        static void ShowPath()
         {
-            Table temp;
-            while (true)
+            int time = 0;
+            string path = goalTable.Key;
+
+            Console.WriteLine(" Goal State: "+ goalTable.Key);
+
+
+
+            while (hashTable[path] != null)
             {
-                Console.WriteLine(hashTable[goalTable.Key]);
 
+                Console.WriteLine(" State[" + ++time + "]: "+ hashTable[path].ToString());
+                path = hashTable[path].ToString();
 
-                temp = new Table();
             }
         }
-        */
 
         static Table CloneTable(Table source)
         {
